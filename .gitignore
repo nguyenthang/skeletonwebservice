@@ -1,0 +1,7 @@
+# Created by .ignore support plugin (hsz.mobi)
+.idea
+.mvn
+target
+mvnw
+mvnw.cmd
+skeletonwebservice.iml
