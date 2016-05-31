@@ -35,7 +35,7 @@ public class ProductBatchBean {
     }
 
     //@Scheduled(initialDelay = 5000, fixedDelay = 15000)
-    @Scheduled(initialDelayString = "${batch.product.initialdelay}", fixedDelayString = "${batch.product.fixeddelay}")
+   // @Scheduled(initialDelayString = "${batch.product.initialdelay}", fixedDelayString = "${batch.product.fixeddelay}")
     public void fixedRateInitialSchedule(){
 
         logger.info("> Initial fixedRate");

@@ -1,12 +1,14 @@
 insert into product(name, description) values('Product1', 'This is product 1');
 insert into product(name, description) values('Product2', 'This is product 2');
 
-insert into account(username, password, enable, expired, locked, credentialexpired) values('user', 'thang', FALSE , FALSE , FALSE , FALSE );
-insert into account(username, password, enable, expired, locked, credentialexpired) values('operation', 'operation', FALSE , FALSE , FALSE , FALSE );
+-- password is 'password'
+INSERT INTO Account (referenceId, username, password, enabled, credentialsexpired, expired, locked, version, createdBy, createdAt, updatedBy, updatedAt) VALUES ('a07bd221-3ecd-4893-a0f0-78d7c0fbf94e', 'user', '$2a$10$9/44Rne7kQqPXa0cY6NfG.3XzScMrCxFYjapoLq/wFmHz7EC9praK', true, false, false, false, 0, 'user', NOW(), NULL, NULL);
+-- password is 'operations'
+INSERT INTO Account (referenceId, username, password, enabled, credentialsexpired, expired, locked, version, createdBy, createdAt, updatedBy, updatedAt) VALUES ('7bd137c8-ab64-4a45-bf2d-d9bae3574622', 'operations', '$2a$10$CoMVfutnv1qZ.fNlHY1Na.rteiJhsDF0jB1o.76qXcfdWN6As27Zm', true, false, false, false, 0, 'user', NOW(), NULL, NULL);
 
-insert into role(id, code, label) VALUES (1, 'ROLE_USER', 'User');
-insert into role(id, code, label) VALUES (2, 'ROLE_ADMIN', 'Admin');
-insert into role(id, code, label) VALUES (3, 'ROLE_SYSADMIN', 'System Admin');
+INSERT INTO Role (id, code, label, ordinal, effectiveAt, expiresAt, createdAt) VALUES (1, 'ROLE_USER', 'User', 0, '2015-01-01 00:00:00', NULL, NOW());
+INSERT INTO Role (id, code, label, ordinal, effectiveAt, expiresAt, createdAt) VALUES (2, 'ROLE_ADMIN', 'Admin', 1, '2015-01-01 00:00:00', NULL, NOW());
+INSERT INTO Role (id, code, label, ordinal, effectiveAt, expiresAt, createdAt) VALUES (3, 'ROLE_SYSADMIN', 'System Admin', 2, '2015-01-01 00:00:00', NULL, NOW());
 
-insert into AccountRole(accountId, roleId) SELECT a.id, r.id from Account a, Role r WHERE a.username = 'user' and r.id = 1;
-insert into AccountRole(accountId, roleId) SELECT a.id, r.id from Account a, Role r WHERE a.username = 'operation' and r.id = 3;
+INSERT INTO AccountRole (accountId, roleId) SELECT a.id, r.id FROM Account a, Role r WHERE a.username = 'user' and r.id = 1;
+INSERT INTO AccountRole (accountId, roleId) SELECT a.id, r.id FROM Account a, Role r WHERE a.username = 'operations' and r.id = 3;
